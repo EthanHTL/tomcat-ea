@@ -29,6 +29,12 @@ import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.modeler.Registry;
 import org.apache.tomcat.util.res.StringManager;
 
+/**
+ * LifecycleMBeanBase 一个是Lifecycle的接口实现，一个是Jmx接口封装实现。
+ *
+ * @author h.t.l
+ * @since 2023/3/11 18:52
+ */
 public abstract class LifecycleMBeanBase extends LifecycleBase
         implements JmxEnabled {
 
@@ -44,6 +50,8 @@ public abstract class LifecycleMBeanBase extends LifecycleBase
     protected MBeanServer mserver = null;
 
     /**
+     * JMX 相关，对Tomcat内组件进行进行监控，<p>
+     * 希望执行额外初始化的子类应该覆盖此方法，确保 super.initInternal() 是覆盖方法中的第一个调用。<p>
      * Sub-classes wishing to perform additional initialization should override
      * this method, ensuring that super.initInternal() is the first call in the
      * overriding method.

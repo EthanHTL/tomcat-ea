@@ -773,6 +773,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
 
         globalNamingResources.start();
 
+        // 启动service
         // Start our defined Services
         synchronized (servicesLock) {
             for (Service service : services) {
@@ -824,6 +825,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
         factory.setContainer(this);
         onameMBeanFactory = register(factory, "type=MBeanFactory");
 
+        // server.xml文件 解析
         // Register the naming resources
         globalNamingResources.init();
 

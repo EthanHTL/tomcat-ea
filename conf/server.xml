@@ -137,6 +137,7 @@
       <Cluster className="org.apache.catalina.ha.tcp.SimpleTcpCluster"/>
       -->
 
+      <!-- realm 是tomcat中为web应用程序提供访问认证和角色管理的机制 -->
       <!-- Use the LockOutRealm to prevent attempts to guess user passwords
            via a brute-force attack -->
       <Realm className="org.apache.catalina.realm.LockOutRealm">

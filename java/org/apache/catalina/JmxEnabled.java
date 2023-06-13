@@ -20,6 +20,8 @@ import javax.management.MBeanRegistration;
 import javax.management.ObjectName;
 
 /**
+ * 理解JmxEnabled：在设计上它引一个域（Domain）对注册的MBeans进行隔离，这个域类似于MBean上层的命名空间一样。
+ *
  * This interface is implemented by components that will be registered with an
  * MBean server when they are created and unregistered when they are destroyed.
  * It is primarily intended to be implemented by components that implement

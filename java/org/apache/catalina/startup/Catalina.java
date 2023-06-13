@@ -544,14 +544,18 @@ public class Catalina {
 
         long t1 = System.nanoTime();
 
+        // （已经弃用）
         initDirs();
 
         // Before digester - it may be needed
         initNaming();
 
+        // 创建并配置我们将用于启动的 Digester , 用于解析 server.xml
         // Create and execute our Digester
         Digester digester = createStartDigester();
 
+
+        // 读取 server.xml
         InputSource inputSource = null;
         InputStream inputStream = null;
         File file = null;
@@ -612,6 +616,7 @@ public class Catalina {
                 return;
             }
 
+            // 解析 server.xml
             try {
                 inputSource.setByteStream(inputStream);
                 digester.push(this);
@@ -641,6 +646,7 @@ public class Catalina {
         // Stream redirection
         initStreams();
 
+        // 启动Server
         // Start the new server
         try {
             getServer().init();
@@ -665,7 +671,7 @@ public class Catalina {
     public void load(String args[]) {
 
         try {
-            if (arguments(args)) {
+            if (arguments(args)) { // 处理命令行的参数
                 load();
             }
         } catch (Exception e) {
@@ -690,6 +696,7 @@ public class Catalina {
 
         long t1 = System.nanoTime();
 
+        // 《核心》Catalina 的启动
         // Start the new server
         try {
             getServer().start();
@@ -708,6 +715,7 @@ public class Catalina {
             log.info("Server startup in " + ((t2 - t1) / 1000000) + " ms");
         }
 
+        // 注册了一个ShutDownHook
         // Register shutdown hook
         if (useShutdownHook) {
             if (shutdownHook == null) {
@@ -808,6 +816,7 @@ public class Catalina {
 
 
     protected void initStreams() {
+        // 替换掉System.out, System.err为自定义的PrintStream
         // Replace System.out and System.err with a custom PrintStream
         System.setOut(new SystemLogHandler(System.out));
         System.setErr(new SystemLogHandler(System.err));
