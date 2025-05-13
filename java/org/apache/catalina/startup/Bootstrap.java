@@ -447,6 +447,8 @@ public final class Bootstrap {
 
 
     /**
+     * 由 catalina.sh/catalina.bat 脚本执行后调用到 Bootstrap 的main方法
+     * 源码入口参考：https://www.cnblogs.com/tanshaoshenghao/p/10932306.html
      * Main method and entry point when starting Tomcat via the provided
      * scripts.
      *
